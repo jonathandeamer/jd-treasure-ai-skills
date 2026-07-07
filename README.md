@@ -8,8 +8,11 @@ plugin bundles one or more skills (`SKILL.md` files) under its own `skills/` dir
 
 ## Status
 
-🚧 Scaffold only — no skills published yet. The marketplace structure, manifest, and contribution flow are in
-place; skills will be added as separate plugins over time.
+Published skills:
+
+| Plugin | Description |
+|--------|-------------|
+| [`reporting-agent`](plugins/reporting-agent) | Three-phase post-campaign performance dashboard, diagnostics, and next-step recommendation workflow for Treasure AI Studio (TAIS). |
 
 ## Structure
 
