@@ -1,0 +1,12 @@
+{
+  "name": "jd-treasure-ai-skills",
+  "owner": {
+    "name": "Jonathan Deamer",
+    "url": "https://github.com/jonathandeamer"
+  },
+  "metadata": {
+    "description": "A public marketplace of custom skills for Treasure AI / Treasure Work and Claude Code.",
+    "version": "0.1.0"
+  },
+  "plugins": []
+}

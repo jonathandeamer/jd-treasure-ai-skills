@@ -1,0 +1,9 @@
+{
+  "name": "example-plugin",
+  "version": "0.1.0",
+  "description": "Template plugin — copy this directory to start a new skill plugin, then replace this description.",
+  "author": {
+    "name": "Jonathan Deamer",
+    "url": "https://github.com/jonathandeamer"
+  }
+}
