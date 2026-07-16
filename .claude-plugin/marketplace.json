@@ -10,11 +10,6 @@
   },
   "plugins": [
     {
-      "name": "reporting-agent",
-      "source": "./plugins/reporting-agent",
-      "description": "Three-phase post-campaign performance dashboard, diagnostics, and next-step recommendation workflow for Treasure AI Studio (TAIS)."
-    },
-    {
       "name": "time",
       "source": "./plugins/time",
       "description": "Reports the user's current local time via IP geolocation, with a system-local-time fallback. Treasure Work skill (/time)."

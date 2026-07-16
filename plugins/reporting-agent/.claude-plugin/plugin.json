@@ -1,9 +1,0 @@
-{
-  "name": "reporting-agent",
-  "version": "0.1.0",
-  "description": "Three-phase post-campaign performance dashboard, diagnostics, and next-step recommendation workflow for Treasure AI Studio (TAIS).",
-  "author": {
-    "name": "Jonathan Deamer",
-    "url": "https://github.com/jonathandeamer"
-  }
-}
