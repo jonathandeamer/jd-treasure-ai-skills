@@ -1,0 +1,9 @@
+{
+  "name": "time",
+  "version": "0.1.0",
+  "description": "Reports the user's current local time via IP geolocation, with a system-local-time fallback. Treasure Work skill (/time), not Treasure Studio.",
+  "author": {
+    "name": "Jonathan Deamer",
+    "url": "https://github.com/jonathandeamer"
+  }
+}

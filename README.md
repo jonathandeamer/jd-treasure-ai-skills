@@ -13,6 +13,7 @@ Published skills:
 | Plugin | Description |
 |--------|-------------|
 | [`reporting-agent`](plugins/reporting-agent) | Three-phase post-campaign performance dashboard, diagnostics, and next-step recommendation workflow for Treasure AI Studio (TAIS). |
+| [`time`](plugins/time) | Reports the user's current local time via IP geolocation, with a system-local-time fallback. Treasure Work skill (`/time`). |
 
 ## Structure
 
