@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
 #
 # Modes:
-#   get_time.sh                    Try IP geolocation. On success, prints
-#                                   location + timezone + current time.
-#                                   On failure, prints "GEOLOCATION_FAILED"
-#                                   and exits 2 — the caller (the skill)
-#                                   should then ask the user for their
-#                                   location/timezone rather than silently
-#                                   falling back.
-#
 #   get_time.sh <iana_timezone>    Prints the current time in the given
 #                                   IANA timezone (e.g. "America/Los_Angeles"),
 #                                   offline — no network call. Use this after
@@ -19,11 +11,12 @@
 #                                   explicitly labeled as such. Only use
 #                                   this if the user declines to share their
 #                                   location/timezone.
-
-TIMEOUT=5
+#
+# This script never performs IP geolocation or any network call — it only
+# formats time for a timezone the caller already knows.
 
 print_system_fallback() {
-  echo "Geolocation unavailable and no timezone provided — using system local time."
+  echo "No timezone provided — using system local time."
   date "+Current time: %A, %B %d, %Y %I:%M:%S %p %Z"
 }
 
@@ -32,9 +25,12 @@ if [ "$1" = "--fallback" ]; then
   exit 0
 fi
 
-if [ -n "$1" ]; then
-  # A timezone was supplied directly — format offline, no network call.
-  if python3 - "$1" <<'PYEOF'
+if [ -z "$1" ]; then
+  echo "USAGE: get_time.sh <iana_timezone> | --fallback" >&2
+  exit 1
+fi
+
+python3 - "$1" <<'PYEOF'
 import sys, datetime
 try:
     from zoneinfo import ZoneInfo
@@ -46,38 +42,3 @@ except Exception as e:
     print(f"INVALID_TIMEZONE: {e}", file=sys.stderr)
     sys.exit(1)
 PYEOF
-  then
-    exit 0
-  else
-    exit 1
-  fi
-fi
-
-# No argument — attempt IP geolocation.
-geo_json=$(curl -fsS --max-time "$TIMEOUT" "https://ipapi.co/json/" 2>/dev/null)
-curl_status=$?
-
-if [ "$curl_status" -eq 0 ] && [ -n "$geo_json" ]; then
-  if python3 - "$geo_json" <<'PYEOF'
-import sys, json, datetime
-try:
-    data = json.loads(sys.argv[1])
-    tz = data.get("timezone")
-    if not tz:
-        raise ValueError("no timezone in geolocation response")
-    from zoneinfo import ZoneInfo
-    now = datetime.datetime.now(ZoneInfo(tz))
-    loc = ", ".join(p for p in [data.get("city"), data.get("region"), data.get("country_name")] if p)
-    print(f"Location: {loc or 'unknown'}")
-    print(f"Timezone: {tz}")
-    print(f"Current time: {now.strftime('%A, %B %d, %Y %I:%M:%S %p %Z (UTC%z)')}")
-except Exception:
-    sys.exit(1)
-PYEOF
-  then
-    exit 0
-  fi
-fi
-
-echo "GEOLOCATION_FAILED"
-exit 2

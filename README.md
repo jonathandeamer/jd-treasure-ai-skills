@@ -12,7 +12,7 @@ Published skills:
 
 | Plugin | Description |
 |--------|-------------|
-| [`time`](plugins/time) | Reports the user's current local time via IP geolocation, with a system-local-time fallback. Treasure Work skill (`/time`). |
+| [`time`](plugins/time) | Asks the user for their city/timezone, then reports the current local time. No IP geolocation or network calls. Treasure Work skill (`/time`). |
 
 ## Structure
 

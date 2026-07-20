@@ -12,7 +12,7 @@
     {
       "name": "time",
       "source": "./plugins/time",
-      "description": "Reports the user's current local time via IP geolocation, with a system-local-time fallback. Treasure Work skill (/time)."
+      "description": "Asks the user for their city/timezone, then reports the current local time. No IP geolocation or network calls. Treasure Work skill (/time)."
     }
   ]
 }

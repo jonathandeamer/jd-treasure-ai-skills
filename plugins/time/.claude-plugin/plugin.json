@@ -1,7 +1,7 @@
 {
   "name": "time",
-  "version": "0.1.0",
-  "description": "Reports the user's current local time via IP geolocation, with a system-local-time fallback. Treasure Work skill (/time), not Treasure Studio.",
+  "version": "0.2.0",
+  "description": "Asks the user for their city/timezone, then reports the current local time. No IP geolocation or network calls. Treasure Work skill (/time).",
   "author": {
     "name": "Jonathan Deamer",
     "url": "https://github.com/jonathandeamer"
